@@ -1,0 +1,62 @@
+.green {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 163, 114);
+    border-radius: 10px;
+    border: none;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Aplicar bordas arredondadas específicas para a primeira linha da tabela */
+thead tr.green {
+    border-radius: 10px;
+    overflow: hidden; /* Garante que o conteúdo fique dentro das bordas arredondadas */
+}
+
+table {
+    border-collapse: separate; /* Permite bordas arredondadas nos cabeçalhos conectados */
+    border-spacing: 0; /* Remove espaçamento entre células */
+    width: 100%;
+}
+
+th:first-child {
+    border-top-left-radius: 10px;
+}
+
+th:last-child {
+    border-top-right-radius: 10px;
+}
+
+
+.cinza{
+    color: rgb(0, 163, 114);
+    background-color: rgb(245, 243, 234);
+}
+
+body {
+    display: flex; /* Define o layout flexbox para o corpo */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Faz o corpo ocupar 100% da altura da janela */
+    margin: 0; /* Remove margens padrão */
+    background-color: #f8f8f8; /* Cor de fundo opcional */
+}
+
+table {
+    width: 80%; /* Ajusta o tamanho da tabela (opcional) */
+    border-collapse: collapse; /* Remove o espaçamento entre as células */
+    background-color: white; /* Fundo branco para destacar a tabela */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+    border-radius: 10px; /* Bordas arredondadas na tabela */
+}
+
+th, td {
+    padding: 10px;
+    text-align: left; /* Alinha o texto à esquerda */
+    border: 1px solid #ddd; /* Adiciona borda fina às células */
+}
+
+thead tr {
+    background-color: rgb(0, 163, 114);
+    color: white;
+}
