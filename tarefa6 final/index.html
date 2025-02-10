@@ -1,0 +1,114 @@
+<!-- index.html (Interface de Gerenciamento do PetShop) -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Definindo a codificação de caracteres e o viewport para responsividade -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título da página exibido na aba do navegador -->
+    <title>PetShop - Gerenciamento</title>
+    
+    <!-- Link para o arquivo de estilos CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Barra de navegação entre páginas -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Início</a></li> <!-- Link para a página inicial -->
+            <li><a href="clientes.html">Clientes</a></li> <!-- Link para a página de clientes -->
+            <li><a href="produtos.html">Produtos</a></li> <!-- Link para a página de produtos -->
+        </ul>
+    </nav>
+    
+    <!-- Cabeçalho da página -->
+    <header>
+        <h1>Gerenciamento do PetShop</h1> <!-- Título principal -->
+        <p>Controle de clientes e produtos de forma eficiente.</p> <!-- Descrição do sistema -->
+    </header>
+    
+    <!-- Seção de Cadastro de Clientes -->
+    <section>
+        <h2>Cadastro de Clientes</h2>
+        <form id="cadastroForm">
+            <!-- Formulário para cadastro de clientes e animais -->
+            <h3>Dados do Tutor</h3>
+            <label>Nome: <input type="text" id="tutorNome" required></label>
+            <label>Telefone: <input type="tel" id="tutorTelefone" required></label>
+            <label>Endereço: <input type="text" id="tutorEndereco" required></label>
+            <label>Data do Atendimento: <input type="date" id="dataAtendimento" required></label>
+            
+            <h3>Dados do Animal</h3>
+            <label>Nome: <input type="text" id="animalNome" required></label>
+            <label>Idade: <input type="number" id="animalIdade" required></label>
+            <label>Porte: 
+                <select id="animalPorte">
+                    <option value="Pequeno">Pequeno</option> <!-- Opções para o porte do animal -->
+                    <option value="Médio">Médio</option>
+                    <option value="Grande">Grande</option>
+                </select>
+            </label>
+            <button type="submit">Cadastrar</button> <!-- Botão para submeter o formulário -->
+        </form>
+    </section>
+    
+    <!-- Seção de Produtos -->
+    <section class="produtos">
+        <h2>Produtos Disponíveis</h2>
+        <!-- Cada produto está contido em um <div> com as informações e botão de adicionar ao carrinho -->
+        <div class="produto" data-nome="Ração Premium" data-valor="50.00">
+            <img src="imagens/racao.jpg" alt="Ração Premium">
+            <h3>Ração Premium</h3>
+            <span>R$ 50,00</span>
+            <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+        </div>
+        
+        <div class="produto" data-nome="Coleira Ajustável" data-valor="25.00">
+            <img src="imagens/coleira.jpg" alt="Coleira Ajustável">
+            <h3>Coleira Ajustável</h3>
+            <span>R$ 25,00</span>
+            <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+        </div>
+        
+        <div class="produto" data-nome="Shampoo Pet" data-valor="30.00">
+            <img src="imagens/shampoo.jpg" alt="Shampoo Pet">
+            <h3>Shampoo Pet</h3>
+            <span>R$ 30,00</span>
+            <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+        </div>
+        
+        <div class="produto" data-nome="Caminha para Cachorro" data-valor="80.00">
+            <img src="imagens/caminha.jpg" alt="Caminha para Cachorro">
+            <h3>Caminha para Cachorro</h3>
+            <span>R$ 80,00</span>
+            <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+        </div>
+    </section>
+    
+    <!-- Script JavaScript -->
+    <script>
+        // Adicionando o evento de clique em cada botão "Adicionar ao Carrinho"
+        document.querySelectorAll('.adicionar-carrinho').forEach(button => {
+            button.addEventListener('click', (event) => {
+                // Pega as informações do produto clicado
+                const produto = event.target.closest('.produto');
+                const nome = produto.getAttribute('data-nome');
+                const valor = produto.getAttribute('data-valor');
+                
+                // Pega o carrinho do localStorage ou cria um carrinho vazio
+                let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+                
+                // Adiciona o produto ao carrinho
+                carrinho.push({ nome, valor });
+                
+                // Armazena o carrinho atualizado no localStorage
+                localStorage.setItem('carrinho', JSON.stringify(carrinho));
+                
+                // Exibe um alerta para o usuário confirmando a adição
+                alert(`${nome} foi adicionado ao carrinho!`);
+            });
+        });
+    </script>
+</body>
+</html>
